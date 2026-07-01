@@ -1,0 +1,58 @@
+{% extends "generic.html" %}
+
+{% block title %}
+    {{ title }} {% block page_title %}{% endblock %}
+{% endblock %}
+
+{% block styles %}
+    {% load static %}
+     <!-- Additional Styles Domain -->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+{% block assets %}
+    {% load static %}
+    <!-- Additional Assets Domain -->
+{% endblock %}
+
+
+{% block header %}
+    {% include "partials/headers/default.html" %}
+{% endblock %}
+
+{% block nav %}
+    <!-- Nav Partial on Domain Level -->
+    {% include "partials/navbars/dev.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <!-- Background conditional-->
+    {% if request.resolver_match.view_name == "index" %}
+        <div class="bg-image bg-image-network bg-animation-grid "></div>
+    {% endif %}
+
+    
+    <main>
+    
+        {% block main %}
+        <!-- Main Content Composed in Index by Organisms -->
+         
+        {% endblock %}
+    </main>
+
+    <aside>
+    {% block aside %} 
+        <!-- Sidebar Partial -->
+    {% endblock %}
+    </aside>
+
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <!-- Scripts Domain -->
+     <script src="{% static 'assets/js/scripts.js' %}"></script>
+{% endblock %}
